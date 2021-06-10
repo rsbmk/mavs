@@ -9,7 +9,7 @@ import './App.css'
 function App () {
   return (
     <CharacterContextProvider>
-      <Route path='/' component={Home}/>
+      <Route path='/mavs/' component={Home}/>
       <Route path='/search/:keyword' component={Search}/>
       <Route path='/detail/:id' component={DetailCharacter}/>
     </CharacterContextProvider>

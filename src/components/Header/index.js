@@ -9,7 +9,7 @@ import { Link } from 'wouter'
 function Header () {
   return (
     <div className='header'>
-      <Link to='/' className='title'>Mavs</Link>
+      <Link to='/mavs/' className='title'>Mavs</Link>
       <InputForm/>
       <DarkMode/>
     </div>
