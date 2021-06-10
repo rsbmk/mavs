@@ -1,0 +1,25 @@
+
+.form{
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--text);
+}
+.inputSearch{
+  line-height: 20px;
+  color: var(--text);
+  background-color: var(--backgrundColorItems);
+  border: none;
+}
+.inputSearch::-webkit-input-placeholder{
+  color: var(--text);
+  font-size: 1em;
+}
+.inputSearch:focus{
+outline: none;
+}
+.btn{
+  color: white;
+  background-color: var(--items);
+  border: none;
+  padding: 4px;
+}

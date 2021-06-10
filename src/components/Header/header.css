@@ -1,0 +1,17 @@
+.header{
+  min-height: 15vh;
+  margin-bottom: 1.5em;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.5);
+  background-color: var(--backgrundColorItems);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around; 
+}
+.title{
+  font-weight: 600;
+  font-size: 3em;
+  color: var(--items);
+  text-decoration: none;
+  text-shadow: 2px 1px 2px rgba(0,0,0,.5);
+}
