@@ -1,13 +1,11 @@
-import { URL_API } from 'settings/urlsApi'
+import { API_URL, hash, PUBLIC_KEY } from 'settings/urlsApi'
 
 export function getSigleCharacter ({ id }) {
-  const API_URL = URL_API({ id })
+  const URL = `${API_URL}/${id}?ts=1&apikey=${PUBLIC_KEY}&hash=${hash}`
 
-  const characters = fetch(API_URL)
+  return fetch(URL)
     .then(res => res.json())
     .then(dataFromApli)
-
-  return characters
 }
 
 function dataFromApli ({ data }) {

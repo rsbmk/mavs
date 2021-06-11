@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
+import Context from 'context/characterContext'
+import { useContext, useEffect, useState } from 'react'
 import { getSigleCharacter } from 'services/getSigleCharacter'
-import { useGetCharacter } from './useGetCharacters'
 
 export function useCallSingleCharacter ({ id }) {
-  const { characterContext } = useGetCharacter()
+  const { characterContext } = useContext(Context)
   const characterFromContext = characterContext.find(single =>
     single.id === Number(id))
 
@@ -25,5 +25,6 @@ export function useCallSingleCharacter ({ id }) {
         })
     }
   }, [id, character])
+
   return { character, loading, isError }
 }

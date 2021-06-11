@@ -1,24 +1,23 @@
 import { DetailOfCharacter } from 'components/DetailCharacter/DetailCharacter'
-import Header from 'components/Header'/*
-import { Spinner } from 'components/Spinner' */
-
+import Header from 'components/Header'
+import { Spinner } from 'components/Spinner'
 import { useCallSingleCharacter } from 'hooks/useCallSingleCharacter'
-
-import { Helmet } from 'react-helmet'
+import '../../components/DetailCharacter/detailCharacter.css'
 
 export function DetailCharacter ({ params }) {
-  const { character } = useCallSingleCharacter(params)
+  const { character, loading, isError } = useCallSingleCharacter({ id: params.id })
 
   if (!character) return null
+  if (isError) return <h2>There was an error in obtaining the data</h2>
+
   return (
     <>
-      <Helmet>
-          <title>{`${character.name} details`}</title>
-          <meta name='description' content={`This page is the details of the search ${character.name}`}/>
-      </Helmet>
       <Header/>
-      <DetailOfCharacter character={character}/>
+      {
+        loading
+          ? <Spinner/>
+          : <DetailOfCharacter character={character}/>
+      }
     </>
-
   )
 }
