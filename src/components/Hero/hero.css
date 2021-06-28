@@ -1,24 +1,27 @@
+.wrap-hero{
+  text-decoration: none;
+}
 .cardCharacter{
   overflow: hidden;
   cursor: pointer;
-  text-decoration: none;
-  max-height:300px ;
+  max-height:310px ;
   border-radius: 5px;
   background-color: var(--backgrundColorItems);
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, .3);
 }
 .imgCharacter{
- /*  width: 100%;
-  height: 100%; */
   width: 100%;
   height: 230px;
   vertical-align: top;
 }
-.nameCharacter{
+.nameCharacter {
   margin: 5px 0 3px 5px;
   color: var(--text);
   font-size: 1.2em;
   font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .descriptionCharacter{
   margin-left: 5px;

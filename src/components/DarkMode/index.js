@@ -6,20 +6,17 @@ function DarkMode () {
   const inputCheckbox = useRef(null)
 
   useEffect(function () {
-    const { matches } = window.matchMedia('(prefers-color-scheme: dark)')
-    setCheked(matches)
-    if (matches) {
+    // const { matches } = window.matchMedia('(prefers-color-scheme: dark)')
+    setCheked(localStorage.getItem('isDark') === 'true')
+    if (localStorage.getItem('isDark') === 'true') {
       document.body.classList.add('isDarkMode')
     }
   }, [])
 
   const handleChange = () => {
     setCheked(inputCheckbox.current.checked)
-    if (inputCheckbox.current.checked) {
-      document.body.classList.add('isDarkMode')
-    } else {
-      document.body.classList.remove('isDarkMode')
-    }
+    document.body.classList.toggle('isDarkMode')
+    localStorage.setItem('isDark', inputCheckbox.current.checked)
   }
 
   return (

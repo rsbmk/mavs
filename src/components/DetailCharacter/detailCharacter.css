@@ -1,9 +1,9 @@
 .cardDetailCharacter{
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 0 1em;
-color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1em;
+  color: var(--text);
 }
 .imgDetailCharacter{
   width: 25em;
@@ -24,7 +24,6 @@ color: var(--text);
   margin-bottom: 20px;
 }
 .wrapInfoCharacter{
-
   display: grid;
   gap: 10px;
   grid-auto-flow: row;
@@ -41,4 +40,9 @@ color: var(--text);
   .imgDetailCharacter{
     margin-right: 10px;
   }
+}
+@media screen and (min-width: 1250px) {
+  .wrapInfoCharacter{
+    grid-template-columns: repeat(auto-fill, minMax(400px, 1fr));
+  } 
 }

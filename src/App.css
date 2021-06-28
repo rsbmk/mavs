@@ -4,10 +4,10 @@
   box-sizing: border-box;
 }
 body{
+  min-height: 150vh;
   position: relative;
   font-family: 'Roboto', sans-serif;
   background-color: var(--backgroundColor);
-
 
   --backgroundColor: rgb(240, 240, 240);
   --backgrundColorItems: rgb(255, 255, 255);
@@ -21,4 +21,12 @@ body.isDarkMode{
   --backgroundColor: #151515;
   --backgrundColorItems: #202020;
   --text: #FFFFFF; 
+}
+
+body::-webkit-scrollbar{
+  width: 5px;
+}
+body::-webkit-scrollbar-thumb{
+  background-color: var(--items);
+  border-radius: 10px;
 }

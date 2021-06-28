@@ -1,0 +1,36 @@
+.wrap-login{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid blue;
+}
+.formLogin{
+  font-size: 1.5em;
+  color: var(--text);
+  border: 1px solid red;
+}
+.username, .password{
+  display: flex;
+  align-items: center;
+  border: 1px solid green;
+}
+.username input,
+.password input{
+  border: none;
+  line-height: 15px;
+  margin-left: 10px;
+}
+.username input:focus,
+.password input:focus{
+  outline: none;
+}
+.btnLogin{
+  border: none;
+  color: var(--text);
+  padding: 8px 13px ;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  background-color: var(--items);
+}
