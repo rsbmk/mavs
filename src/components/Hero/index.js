@@ -11,7 +11,7 @@ function Hero ({ path, extension, name, description, id }) {
         <h3 className='nameCharacter'>{name}</h3>
         <p className='descriptionCharacter'>{description || 'No description'}</p>
       </Link>
-        <CharacterButtons id={id}/>
+        <CharacterButtons idCharacter={id}/>
     </div>
   )
 }

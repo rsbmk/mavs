@@ -3,20 +3,31 @@ import { useLocation } from 'wouter'
 
 import './likeButton.css'
 
-export function CharacterButtons ({ id }) {
+export function CharacterButtons ({ idCharacter }) {
   const [, setLocation] = useLocation()
-  const { isLogged } = useUser()
+  const {
+    userContext,
+    isLogged,
+    likeContext,
+    addLike,
+    deleteLike
+  } = useUser()
+
+  const isLike = likeContext.some(like => like === idCharacter)
 
   const handleClickLike = () => {
+    const { jwt } = userContext
     if (!isLogged) return setLocation('/mavs/login')
-
-    alert(id)
+    // eslint-disable-next-line padded-blocks
+    isLike ? deleteLike({ idCharacter, jwt }) : addLike({ idCharacter, jwt })
   }
 
   return (
     <>
-      <button className='likeButton' onClick={handleClickLike}>
-        <i className="far fa-heart"/>
+      <button aria-label='like' className='likeButton' onClick={handleClickLike}>
+        {isLike
+          ? <i className="fas fa-heart"/>
+          : <i className="far fa-heart"/>}
       </button>
 
       <button className='commentButton'>
