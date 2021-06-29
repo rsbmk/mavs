@@ -3,9 +3,8 @@ import { useLocation } from 'wouter'
 import './inputForm.css'
 
 export function InputForm () {
+  const [, setLocation] = useLocation()
   const [input, setInput] = useState('')
-  // eslint-disable-next-line no-unused-vars
-  const [_, setLocation] = useLocation()
 
   const handleChange = (evt) => {
     setInput(evt.target.value)
@@ -13,7 +12,7 @@ export function InputForm () {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    setLocation(`/search/${input}`)
+    if (input) setLocation(`/search/${input}`)
   }
 
   return (

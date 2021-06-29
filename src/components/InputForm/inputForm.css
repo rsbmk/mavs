@@ -1,26 +1,28 @@
 
 .form{
   overflow: hidden;
+  box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, .5);
+  border-radius: 30px;
 }
 .inputSearch{
-  line-height: 21px;
+  border: none;
+  padding: 5px 8px;
+  line-height: 1.6;
   color: var(--text);
-  background-color: var(--backgrundColorItems);
-  border: 1px solid var(--text); 
-  border-right-color: transparent;
-  border-radius: 6px 0 0 6px;
+  background-color: var(--backgroundColor);
 }
 .inputSearch::-webkit-input-placeholder{
   color: var(--text);
   font-size: 1em;
 }
 .inputSearch:focus{
-outline: none;
+  outline: none;
 }
 .btn{
   color: white;
-  background-color: var(--items);
   border: none;
-  padding: 4px 10px;
-  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 0;
+  background-color: var(--items);
 }

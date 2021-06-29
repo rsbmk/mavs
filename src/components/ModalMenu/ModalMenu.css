@@ -1,0 +1,49 @@
+.wrapBarMenu{
+  position: relative;
+}
+.modalBarMenu{
+  user-select: none;
+  right: 0;
+  top: 32px;
+  position: absolute;
+  width: 10em;
+  overflow: hidden;
+  padding: 0 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.5);
+  background-color: var(--backgroundColor);
+}
+.modalBarMenu div {
+  padding: 5px 0;
+  border-bottom:1px solid var(--items);
+}
+.BarMenuDarkMode{
+  display: flex;
+  color: var(--text);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoutMenu{
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 1em;
+  background-color: transparent;
+
+}
+.loginMenu{
+  font-size: 1em;
+  text-decoration: none;
+  color: var(--text);
+}
+.nameUser span{
+  color: var(--text);
+}
+
+@media screen and (min-width:670px) {
+  .modalBarMenu{
+    width:15em ;
+    height: 8em;
+  }
+}

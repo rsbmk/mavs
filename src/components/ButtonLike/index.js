@@ -1,10 +1,13 @@
+import { LoginForm } from 'components/login'
+import { ModalPortal } from 'components/ModalLogin'
 import { useUser } from 'hooks/useUser'
-import { useLocation } from 'wouter'
+import { useCallback, useState } from 'react'
 
 import './likeButton.css'
 
 export function CharacterButtons ({ idCharacter }) {
-  const [, setLocation] = useLocation()
+  const [showModal, setShowModal] = useState(false)
+
   const {
     userContext,
     isLogged,
@@ -15,12 +18,16 @@ export function CharacterButtons ({ idCharacter }) {
 
   const isLike = likeContext.some(like => like === idCharacter)
 
-  const handleClickLike = () => {
+  const handleClickLike = useCallback(() => {
     const { jwt } = userContext
-    if (!isLogged) return setLocation('/mavs/login')
+    if (!isLogged) return setShowModal(true)
     // eslint-disable-next-line padded-blocks
     isLike ? deleteLike({ idCharacter, jwt }) : addLike({ idCharacter, jwt })
-  }
+  }, [])
+
+  const handleCloseModal = useCallback(() => {
+    setShowModal(false)
+  }, [setShowModal])
 
   return (
     <>
@@ -33,6 +40,12 @@ export function CharacterButtons ({ idCharacter }) {
       <button className='commentButton'>
         <i className="far fa-comment"/>
       </button>
+     {showModal &&
+     <ModalPortal
+      onClose={handleCloseModal}
+     >
+      <LoginForm onClose={handleCloseModal}/>
+    </ModalPortal>}
   </>
   )
 }

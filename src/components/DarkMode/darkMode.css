@@ -1,7 +1,7 @@
 .switch{
   display: block;
-  height: 25px;
-  width: 60px;
+  height: 21px;
+  width: 48px;
   border-radius: 20px;
   padding: 3px;
   cursor: pointer;
@@ -11,8 +11,8 @@
 .switch::before{
   content: "";
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   background-color: var(--backgrundColorItems);
   transform: translateX(0px);
@@ -22,5 +22,5 @@
   display: none;
 }
 .checkbox:checked ~ .switch::before{
-  transform: translateX(35px);
+  transform: translateX(28px);
 }

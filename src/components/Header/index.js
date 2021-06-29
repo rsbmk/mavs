@@ -1,17 +1,18 @@
 import React from 'react'
 
-import './header.css'
-
-import DarkMode from 'components/DarkMode'
 import { InputForm } from 'components/InputForm'
+import { MenuBars } from 'components/MenuBar'
+
 import { Link } from 'wouter'
+
+import './header.css'
 
 function Header () {
   return (
     <div className='header'>
       <Link to='/mavs/' className='title'>Mavs</Link>
       <InputForm/>
-      <DarkMode/>
+      <MenuBars/>
     </div>
   )
 }
