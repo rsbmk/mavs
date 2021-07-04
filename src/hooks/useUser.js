@@ -23,7 +23,7 @@ export function useUser () {
 
   const logout = useCallback(() => {
     setUserContext({})
-    window.sessionStorage.setItem('user', {})
+    window.sessionStorage.removeItem('user')
   }, [])
 
   const addLike = useCallback(({ idCharacter, jwt }) => {

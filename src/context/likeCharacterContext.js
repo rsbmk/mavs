@@ -7,14 +7,14 @@ const context = createContext({})
 export function LikeCharacterContextProvider ({ children }) {
   const [likeContext, setLikeContext] = useState([])
   const { isLogged, userContext } = useUser()
+  const { jwt } = userContext
 
   useEffect(() => {
     if (!isLogged) return setLikeContext([])
-    const { jwt } = userContext
     getAllLike({ jwt })
       .then(setLikeContext)
       // .catch(e => console.error(e)) */
-  }, [isLogged])
+  }, [isLogged, jwt])
 
   return <context.Provider value={{ likeContext, setLikeContext }}>
     {children}

@@ -1,10 +1,16 @@
 import { LoginForm } from 'components/login'
 import 'components/login/login.css'
+import { Helmet } from 'react-helmet'
 
 export function Login () {
   return (
-    <div className='wrap-login'>
-    <LoginForm/>
-    </div>
+    <>
+      <Helmet>
+        <title>Mavs Login</title>
+      </Helmet>
+      <div className='wrap-login'>
+      <LoginForm/>
+      </div>
+    </>
   )
 }

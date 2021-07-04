@@ -15,15 +15,14 @@ export function CharacterButtons ({ idCharacter }) {
     addLike,
     deleteLike
   } = useUser()
+  const { jwt } = userContext
 
   const isLike = likeContext.some(like => like === idCharacter)
 
   const handleClickLike = useCallback(() => {
-    const { jwt } = userContext
     if (!isLogged) return setShowModal(true)
-    // eslint-disable-next-line padded-blocks
     isLike ? deleteLike({ idCharacter, jwt }) : addLike({ idCharacter, jwt })
-  }, [])
+  }, [isLike, isLogged])
 
   const handleCloseModal = useCallback(() => {
     setShowModal(false)

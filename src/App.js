@@ -3,6 +3,7 @@ import { CharacterContextProvider } from 'context/characterContext'
 import { UserContextProvider } from 'context/userContext'
 
 import { DetailCharacter } from 'pages/DetailCharacter'
+import { SingUp } from 'pages/SingUp'
 import { Search } from 'pages/Search'
 import { Login } from 'pages/Login'
 import { Home } from 'pages/Home'
@@ -15,6 +16,7 @@ function App () {
   return (
     <UserContextProvider>
       <Route path='/mavs/login' component={Login}/>
+      <Route path='/mavs/singup' component={SingUp}/>
       <CharacterContextProvider>
         <LikeCharacterContextProvider>
         <Route path='/mavs/' component={Home}/>

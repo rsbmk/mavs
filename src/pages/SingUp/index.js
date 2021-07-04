@@ -1,40 +1,48 @@
-import { Spinner } from 'components/Spinner'
 import { useEffect } from 'react'
+
 import { Link, useLocation } from 'wouter'
-import { reducerLogin } from './reduecerLogin'
 
-import './login.css'
+import { reducerSingUp } from './reducerSingUp'
 
-export function LoginForm ({ onClose }) {
+import './singUp.css'
+
+export function SingUp () {
   const [, setLocation] = useLocation()
   const {
+    user,
+    name,
     username,
     password,
-    isLogged,
-    isError,
-    loadingLogin,
+    handleSingUp,
+    hanldeName,
     handleUsername,
-    hanldePassword,
-    handleLogin
-  } = reducerLogin()
+    hanldePassword
+  } = reducerSingUp()
 
   useEffect(function () {
-    if (isLogged) {
-      setLocation('/mavs/')
-      onClose && onClose()
-    }
-  }, [isLogged])
-
-  if (loadingLogin) return <Spinner/>
+    if (user.name) setLocation('/mavs/login')
+  }, [user])
 
   return (
-    <>
-      <form className='formLogin' onSubmit={handleLogin}>
-        <h1 className='titleLogin'>Login</h1>
-
-        {isError && <div>Username or Password wrong</div>}
+    <div className='wrapSingUp'>
+      <form className='formLogin' onSubmit={handleSingUp}>
+        <h1 className='titleLogin'>Sing Up</h1>
 
         <div className='wrapFormLogin'>
+          <label className='username'>
+            Name
+            <div>
+              <i className="fas fa-user"/>
+              <input
+                type='text'
+                value={name}
+                name='name'
+                className='nameInput'
+                placeholder='Type your name'
+                onChange={hanldeName}/>
+            </div>
+          </label>
+
           <label className='username'>
             Username
             <div>
@@ -62,10 +70,11 @@ export function LoginForm ({ onClose }) {
               onChange={hanldePassword}/>
             </div>
           </label>
-          <button className='btnLogin'>Login</button>
+
+          <button className='btnLogin'>Sing Up</button>
         </div>
-        <Link to='/mavs/singup' className='singUp'>SING UP</Link>
+        <Link to='/mavs/login' className='login'>Login</Link>
       </form>
-    </>
+    </div>
   )
 }

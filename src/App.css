@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body{
-  min-height: 150vh;
+  min-height: 110vh;
   position: relative;
   font-family: 'Roboto', sans-serif;
   background-color: var(--backgroundColor);

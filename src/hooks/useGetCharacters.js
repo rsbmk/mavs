@@ -1,30 +1,35 @@
-import Context from 'context/characterContext'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { getCharacters } from 'services/getCharacters'
+import { reducerCharacter } from './reducerCharacter'
 
 export function useGetCharacter (keyword) {
-  const { characterContext, setCharacterContext } = useContext(Context)
-  const [loading, setLoading] = useState(false)
-  const [page, setPage] = useState(0)
+  const {
+    loading,
+    page,
+    characterContext,
+    setCharacterContext,
+    setLoading,
+    setPage
+  } = reducerCharacter()
 
   useEffect(function () {
-    // if (!characterContext || keyword) {
+    // if (Boolean(characterContext) && keyword) return
     setLoading(true)
     getCharacters({ keyword })
       .then(character => {
         setCharacterContext(character)
         setLoading(false)
       })
-    // }
   }, [keyword])
 
   useEffect(function () {
     if (page === 0) return
     getCharacters({ keyword, page })
       .then(nextCharacter => {
+        console.log('fui por la otra pagina')
         setCharacterContext(preState => preState.concat(nextCharacter))
       })
-  }, [page])
+  }, [page, keyword])
 
-  return { characterContext, loading, setPage }
+  return { characterContext, loading, page, setPage }
 }
