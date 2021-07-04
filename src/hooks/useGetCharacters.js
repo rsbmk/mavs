@@ -26,7 +26,6 @@ export function useGetCharacter (keyword) {
     if (page === 0) return
     getCharacters({ keyword, page })
       .then(nextCharacter => {
-        console.log('fui por la otra pagina')
         setCharacterContext(preState => preState.concat(nextCharacter))
       })
   }, [page, keyword])

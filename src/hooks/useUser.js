@@ -10,14 +10,20 @@ export function useUser () {
   const { likeContext, setLikeContext } = useContext(likeListContext)
   const { userContext, setUserContext } = useContext(ContextUser)
   const [loadingLogin, setLoadingLogin] = useState(false)
+  const [error, setError] = useState({ is: false, message: '' })
+
+  const likeList = likeContext || []
 
   const login = useCallback(({ username, password }) => {
-    setLoadingLogin(true)
+    // setLoadingLogin(true)
     const { userResponseAPI } = loginAtApi({ username, password })
     userResponseAPI.then(user => {
       sessionStorage.setItem('user', JSON.stringify(user))
       setUserContext(user)
       setLoadingLogin(false)
+      setError({ is: false })
+    }).catch(() => {
+      setError({ is: true, message: 'the username or the passwords are wrong' })
     })
   }, [])
 
@@ -39,14 +45,15 @@ export function useUser () {
   }, [])
 
   return {
-    isLogged: Boolean(userContext.name),
-    isError: userContext.error,
+    isLogged: Boolean(userContext.jwt),
     loadingLogin,
     userContext,
-    likeContext,
+    likeList,
+    error,
     login,
     logout,
     deleteLike,
-    addLike
+    addLike,
+    setLoadingLogin
   }
 }

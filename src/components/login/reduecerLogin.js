@@ -29,7 +29,7 @@ const reducer = (state, action) => {
 }
 
 export const reducerLogin = () => {
-  const { isLogged, login, isError, loadingLogin } = useUser()
+  const { isLogged, error, loadingLogin, login, setLoadingLogin } = useUser()
 
   const handleUsername = (evt) => {
     dispatch({
@@ -47,6 +47,7 @@ export const reducerLogin = () => {
 
   const handleLogin = (evt) => {
     evt.preventDefault()
+    setLoadingLogin(true)
     login({ username, password })
 
     dispatch({ type: ACTIONS.UPDATE_PASSWORD, payload: '' })
@@ -60,7 +61,7 @@ export const reducerLogin = () => {
     username,
     password,
     isLogged,
-    isError,
+    error,
     loadingLogin,
     handleUsername,
     hanldePassword,

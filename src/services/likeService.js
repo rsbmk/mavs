@@ -1,8 +1,8 @@
 
-const baseURL = 'http://localhost:3001/api/characters/'
+import { URL_API_GET_CHARACTER } from 'settings/urlsApi'
 
 export const getAllLike = ({ jwt }) => {
-  return fetch(baseURL, {
+  return fetch(URL_API_GET_CHARACTER, {
     headers: {
       // eslint-disable-next-line quote-props
       'Authorization': `Bearer ${jwt}`
@@ -13,7 +13,7 @@ export const getAllLike = ({ jwt }) => {
 }
 
 export const sendLike = ({ idCharacter, jwt }) => {
-  return fetch(baseURL, {
+  return fetch(URL_API_GET_CHARACTER, {
     method: 'POST',
     body: JSON.stringify({ idCharacter }),
     headers: {
@@ -22,10 +22,11 @@ export const sendLike = ({ idCharacter, jwt }) => {
       'Authorization': `Bearer ${jwt}`
     }
   }).then(res => res.json())
+    .catch(error => console.log(error))
 }
 
 export const removeLike = ({ idCharacter, jwt }) => {
-  return fetch(baseURL, {
+  return fetch(URL_API_GET_CHARACTER, {
     method: 'DELETE',
     body: JSON.stringify({ idCharacter }),
     headers: {
@@ -34,4 +35,5 @@ export const removeLike = ({ idCharacter, jwt }) => {
       'Authorization': `Bearer ${jwt}`
     }
   }).then(res => res.json())
+    .catch(error => console.log(error))
 }

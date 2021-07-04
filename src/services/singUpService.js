@@ -1,8 +1,8 @@
 
-const baseURL = 'http://localhost:3001/api/users/'
+import { URL_API_SINGUP } from 'settings/urlsApi'
 
 export const singUpService = ({ name, username, password }) => {
-  const resAPILogin = fetch(baseURL, {
+  const resAPILogin = fetch(URL_API_SINGUP, {
     method: 'POST',
     body: JSON.stringify({ name, username, password }),
     headers: {

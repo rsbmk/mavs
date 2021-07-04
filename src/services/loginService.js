@@ -1,8 +1,8 @@
 
-const baseURL = 'http://localhost:3001/api/login'
+import { URL_API_LOGIN } from 'settings/urlsApi'
 
 export const loginAtApi = ({ username, password }) => {
-  const userResponseAPI = fetch(baseURL, {
+  const userResponseAPI = fetch(URL_API_LOGIN, {
     method: 'POST',
     body: JSON.stringify({ username, password }),
     headers: {

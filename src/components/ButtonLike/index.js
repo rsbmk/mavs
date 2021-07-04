@@ -10,14 +10,15 @@ export function CharacterButtons ({ idCharacter }) {
 
   const {
     userContext,
+    likeList,
     isLogged,
-    likeContext,
     addLike,
     deleteLike
   } = useUser()
+
   const { jwt } = userContext
 
-  const isLike = likeContext.some(like => like === idCharacter)
+  const isLike = useCallback(likeList.some(like => like === idCharacter), [likeList])
 
   const handleClickLike = useCallback(() => {
     if (!isLogged) return setShowModal(true)

@@ -11,7 +11,7 @@ export function LoginForm ({ onClose }) {
     username,
     password,
     isLogged,
-    isError,
+    error,
     loadingLogin,
     handleUsername,
     hanldePassword,
@@ -32,7 +32,7 @@ export function LoginForm ({ onClose }) {
       <form className='formLogin' onSubmit={handleLogin}>
         <h1 className='titleLogin'>Login</h1>
 
-        {isError && <div>Username or Password wrong</div>}
+        {error.is && <div>{error.message}</div>}
 
         <div className='wrapFormLogin'>
           <label className='username'>

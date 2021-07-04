@@ -1,7 +1,7 @@
-import { API_URL, hash, PUBLIC_KEY } from 'settings/urlsApi'
+import { URL_SINGLE_CHARACTER } from 'settings/urlsApi'
 
 export function getSigleCharacter ({ id }) {
-  const URL = `${API_URL}/${id}?ts=1&apikey=${PUBLIC_KEY}&hash=${hash}`
+  const URL = URL_SINGLE_CHARACTER({ id })
 
   return fetch(URL)
     .then(res => res.json())
