@@ -29,7 +29,13 @@ const reducer = (state, action) => {
 }
 
 export const reducerLogin = () => {
-  const { isLogged, error, loadingLogin, login, setLoadingLogin } = useUser()
+  const {
+    loadingLogin,
+    isLogged,
+    error,
+    login,
+    setLoadingLogin
+  } = useUser()
 
   const handleUsername = (evt) => {
     dispatch({

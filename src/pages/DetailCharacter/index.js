@@ -1,8 +1,10 @@
-import { DetailOfCharacter } from 'components/DetailCharacter/DetailCharacter'
 import Header from 'components/Header'
 import { Spinner } from 'components/Spinner'
+import { DetailOfCharacter } from 'components/DetailCharacter/DetailCharacter'
+
 import { useCallSingleCharacter } from 'hooks/useCallSingleCharacter'
-import '../../components/DetailCharacter/detailCharacter.css'
+
+import 'components/DetailCharacter/detailCharacter.css'
 
 export function DetailCharacter ({ params }) {
   const { character, loading, isError } = useCallSingleCharacter({ id: params.id })

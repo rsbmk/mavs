@@ -6,7 +6,7 @@
   color: var(--text);
 }
 .imgDetailCharacter{
-  width: 25em;
+  width: 20em;
   border-radius: 10px;
   margin-bottom: .2em;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, .5);
@@ -30,19 +30,24 @@
   grid-template-columns: repeat(auto-fill, minMax(200px, 1fr));
   grid-auto-rows: minmax(20px, 1fr);
 }
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 800px) {
   .cardDetailCharacter{
     display: flex;
     flex-direction: row;
-    padding: 0 1em;
-    color: var(--text);
+    flex-wrap: 10px;
+    align-items: center;
+    justify-content: center;
   }
   .imgDetailCharacter{
     margin-right: 10px;
+    width: 28em;
+  }
+  .wrapInfoDetail{
+    width: 50%;
   }
 }
 @media screen and (min-width: 1250px) {
   .wrapInfoCharacter{
-    grid-template-columns: repeat(auto-fill, minMax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minMax(300px, 1fr));
   } 
 }

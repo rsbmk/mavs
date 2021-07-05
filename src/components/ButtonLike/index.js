@@ -1,13 +1,14 @@
+import { useCallback } from 'react'
+
 import { LoginForm } from 'components/login'
 import { ModalPortal } from 'components/ModalLogin'
+
+import { useShowModal } from 'hooks/useShowModal'
 import { useUser } from 'hooks/useUser'
-import { useCallback, useState } from 'react'
 
 import './likeButton.css'
 
 export function CharacterButtons ({ idCharacter }) {
-  const [showModal, setShowModal] = useState(false)
-
   const {
     userContext,
     likeList,
@@ -16,18 +17,16 @@ export function CharacterButtons ({ idCharacter }) {
     deleteLike
   } = useUser()
 
+  const { showModal, openModal, closeModal } = useShowModal()
+
   const { jwt } = userContext
 
   const isLike = useCallback(likeList.some(like => like === idCharacter), [likeList])
 
   const handleClickLike = useCallback(() => {
-    if (!isLogged) return setShowModal(true)
+    if (!isLogged) return openModal()
     isLike ? deleteLike({ idCharacter, jwt }) : addLike({ idCharacter, jwt })
   }, [isLike, isLogged])
-
-  const handleCloseModal = useCallback(() => {
-    setShowModal(false)
-  }, [setShowModal])
 
   return (
     <>
@@ -40,11 +39,12 @@ export function CharacterButtons ({ idCharacter }) {
       <button className='commentButton'>
         <i className="far fa-comment"/>
       </button>
+
      {showModal &&
      <ModalPortal
-      onClose={handleCloseModal}
+      closeModal={closeModal}
      >
-      <LoginForm onClose={handleCloseModal}/>
+      <LoginForm closeModal={closeModal}/>
     </ModalPortal>}
   </>
   )

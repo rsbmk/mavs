@@ -1,0 +1,24 @@
+.wrapComment{
+  min-height: 5em;
+  padding: 5px 1em;
+  background-color: var(--backgrundColorItems);
+}
+.newComment{
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 10px 0 0;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0,.5);
+}
+.inputComment{
+  width: 100%;
+  border: none;
+  padding-left: 7px;
+  border-radius: 0;
+  line-height: 2;
+  color: var(--text);
+  background-color: var(--backgrundColorItems);
+}
+.inputComment:focus{
+  outline: none;
+}

@@ -1,12 +1,11 @@
 import { Spinner } from 'components/Spinner'
 import { useEffect } from 'react'
-import { Link, useLocation } from 'wouter'
+import { Link } from 'wouter'
 import { reducerLogin } from './reduecerLogin'
 
 import './login.css'
 
-export function LoginForm ({ onClose }) {
-  const [, setLocation] = useLocation()
+export function LoginForm ({ closeModal }) {
   const {
     username,
     password,
@@ -19,10 +18,7 @@ export function LoginForm ({ onClose }) {
   } = reducerLogin()
 
   useEffect(function () {
-    if (isLogged) {
-      setLocation('/mavs/')
-      onClose && onClose()
-    }
+    if (isLogged) closeModal()
   }, [isLogged])
 
   if (loadingLogin) return <Spinner/>

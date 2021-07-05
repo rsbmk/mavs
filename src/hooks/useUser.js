@@ -17,6 +17,7 @@ export function useUser () {
   const login = useCallback(({ username, password }) => {
     // setLoadingLogin(true)
     const { userResponseAPI } = loginAtApi({ username, password })
+
     userResponseAPI.then(user => {
       sessionStorage.setItem('user', JSON.stringify(user))
       setUserContext(user)
@@ -52,8 +53,8 @@ export function useUser () {
     error,
     login,
     logout,
-    deleteLike,
     addLike,
+    deleteLike,
     setLoadingLogin
   }
 }

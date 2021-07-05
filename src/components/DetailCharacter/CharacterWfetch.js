@@ -16,10 +16,10 @@ export function CharacterWithFetch ({ character }) {
         <h2 className='nameDetailCharacter'>{character.name}</h2>
         <h3 className='descriptionDetailCharacter'>{character.description || 'No Description ...'}</h3>
         <div className='wrapInfoCharacter'>
-          <InfoCharacterDetail title={'Comics'} info={character.comics.items}/>
-          <InfoCharacterDetail title={'Series'} info={character.series.items}/>
-          <InfoCharacterDetail title={'Stories'} info={character.stories.items}/>
-          <InfoCharacterDetail title={'Events'} info={character.events.items}/>
+          <InfoCharacterDetail title={'Comics'} info={character.comics.items || 'No Content...'}/>
+          <InfoCharacterDetail title={'Series'} info={character.series.items || 'No Content...'}/>
+          <InfoCharacterDetail title={'Stories'} info={character.stories.items || 'No Content...'}/>
+          <InfoCharacterDetail title={'Events'} info={character.events.items || 'No Content...'}/>
         </div>
       </div>
     </article>
