@@ -8,7 +8,6 @@ export function useShowModal () {
   }, [setShowModal])
 
   const openModal = useCallback(() => {
-    console.log('voy abrir')
     setShowModal(true)
   }, [setShowModal])
 

@@ -1,18 +1,23 @@
 import '../Hero/hero.css'
 import './detailCharacter.css'
 
-import { CharacterWithContext } from './characterWcontext'
-import { CharacterWithFetch } from './CharacterWfetch'
+import { CharacterWithContext } from './CharacterWC'
+import { CharacterWithFetch } from './characterWF'
 import { Comment } from 'components/Comment'
 
 export function DetailOfCharacter ({ character }) {
-  // console.log(character)
+  const idCharacter = character[0] ? character[0].id : character.id
+
   return <>
   {
+    /* This is because when the character is entered from home,
+      for better performance the character is taken from the context.
+      But if the detail page is reloaded or it is searched directly,
+      the API call is made since the context is empty */
     character[0]
-      ? <CharacterWithContext character={character}/>
-      : <CharacterWithFetch character={character}/>
+      ? <CharacterWithFetch character={character}/>
+      : <CharacterWithContext character={character}/>
   }
-  <Comment idCharacter={character.id}/>
+   <Comment idCharacter={idCharacter}/>
   </>
 }

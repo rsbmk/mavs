@@ -1,4 +1,5 @@
 import { LikeCharacterContextProvider } from 'context/likeCharacterContext'
+import { CommentCharacterContextProvider } from 'context/commentsContext'
 import { CharacterContextProvider } from 'context/characterContext'
 import { UserContextProvider } from 'context/userContext'
 
@@ -19,9 +20,11 @@ function App () {
       <Route path='/mavs/singup' component={SingUp}/>
       <CharacterContextProvider>
         <LikeCharacterContextProvider>
-        <Route path='/mavs/' component={Home}/>
-        <Route path='/search/:keyword' component={Search}/>
-        <Route path='/detail/:id' component={DetailCharacter}/>
+          <CommentCharacterContextProvider>
+          <Route path='/mavs/' component={Home}/>
+          <Route path='/search/:keyword' component={Search}/>
+          <Route path='/detail/:id' component={DetailCharacter}/>
+          </CommentCharacterContextProvider>
         </LikeCharacterContextProvider>
       </CharacterContextProvider>
     </UserContextProvider>

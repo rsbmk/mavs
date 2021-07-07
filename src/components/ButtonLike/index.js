@@ -29,7 +29,7 @@ export function CharacterButtons ({ idCharacter }) {
   }, [isLike, isLogged])
 
   return (
-    <>
+    <div className='wrapLikeButtons'>
       <button aria-label='like' className='likeButton' onClick={handleClickLike}>
         {isLike
           ? <i className="fas fa-heart"/>
@@ -46,6 +46,6 @@ export function CharacterButtons ({ idCharacter }) {
      >
       <LoginForm closeModal={closeModal}/>
     </ModalPortal>}
-  </>
+  </div>
   )
 }

@@ -1,3 +1,6 @@
+.wrapLikeButtons{
+  margin-bottom: 8px;
+}
 .likeButton,
 .commentButton{
   color: var(--text);

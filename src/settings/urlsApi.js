@@ -7,6 +7,7 @@ export const API_URL = 'https://gateway.marvel.com:443/v1/public/characters'
 export const URL_API_GET_CHARACTER = 'http://localhost:3001/api/characters/'
 export const URL_API_LOGIN = 'http://localhost:3001/api/login'
 export const URL_API_SINGUP = 'http://localhost:3001/api/users/'
+export const URL_API_COMMENT = 'http://localhost:3001/api/comments/'
 
 export const URL_SINGLE_CHARACTER = ({ id } = {}) => {
   return `${API_URL}/${id}?ts=1&apikey=${PUBLIC_KEY}&hash=${hash}`

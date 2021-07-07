@@ -1,7 +1,7 @@
 import { InfoCharacterDetail } from 'components/InfoCharacterDetail'
 import { Helmet } from 'react-helmet'
 
-export function CharacterWithContext ({ character }) {
+export function CharacterWithFetch ({ character }) {
   return (
 
     character.map(({ name, id, thumbnail, description, comics, series, stories, events }) => {

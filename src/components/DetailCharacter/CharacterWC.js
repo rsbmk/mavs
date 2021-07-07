@@ -1,7 +1,7 @@
 import { InfoCharacterDetail } from 'components/InfoCharacterDetail'
 import { Helmet } from 'react-helmet'
 
-export function CharacterWithFetch ({ character }) {
+export function CharacterWithContext ({ character }) {
   return (
   <article className='cardDetailCharacter'>
         <Helmet>
