@@ -1,11 +1,11 @@
-https://postimg.cc/2qBXfQjs
+![Mavs](https://ibb.co/MszbTC0)
 # Mavs
 
 Mavs is a website where you can find all the marvel characters. The objective and the fun of this website is that you can find your favorite characters, leave a like and make a comment if you are. Of course, for all this you need to have a user account.
 
-![home](https://postimg.cc/ct0MKYR5.png)
+![home](https://ibb.co/Nn3F6hk)
 
-![detail](https://postimg.cc/5XTrX767.png)
+![detail](https://ibb.co/DkVk7sd)
 
 ## Table of Contents
 1. List of new feactures
