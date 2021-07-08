@@ -4,7 +4,7 @@
 
 Mavs is a website where you can find all the marvel characters. The objective and the fun of this website is that you can find your favorite characters, leave a like and make a comment if you are. Of course, for all this you need to have a user account.
 
-![home](http://imgfz.com/i/WFoBmz1.png)
+![home](http://imgfz.com/i/iQtvcTJ.png)
 
 ![detail](http://imgfz.com/i/pEsmPif.png)
 
