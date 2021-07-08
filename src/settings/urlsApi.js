@@ -4,10 +4,11 @@ export const hash = 'c20a02eaa0de7e477a390cb3f0dacf26'
 export const API_URL = 'https://gateway.marvel.com:443/v1/public/characters'
 
 // api mavs
-export const URL_API_GET_CHARACTER = 'http://localhost:3001/api/characters/'
-export const URL_API_LOGIN = 'http://localhost:3001/api/login'
-export const URL_API_SINGUP = 'http://localhost:3001/api/users/'
-export const URL_API_COMMENT = 'http://localhost:3001/api/comments/'
+const URL_BACKEND = 'https://hidden-garden-13957.herokuapp.com'
+export const URL_API_GET_CHARACTER = `${URL_BACKEND}/api/characters/`
+export const URL_API_LOGIN = `${URL_BACKEND}/api/login`
+export const URL_API_SINGUP = `${URL_BACKEND}/api/users/`
+export const URL_API_COMMENT = `${URL_BACKEND}/api/comments/`
 
 export const URL_SINGLE_CHARACTER = ({ id } = {}) => {
   return `${API_URL}/${id}?ts=1&apikey=${PUBLIC_KEY}&hash=${hash}`
