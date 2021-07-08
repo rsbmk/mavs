@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 8px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0,.5) ;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0,.2) ;
 }
 .wrapCommentContent{
   width: 95%;
@@ -17,7 +17,8 @@
   font-size: .9em;
   color: var(--text);
   margin: 5px 0;
-  padding-bottom: 1px;
+  padding: 5px 0;
+  position: relative;
   border-bottom: 1px solid rgba(128, 128, 128, 0.356);
 }
 .commentUsername{
@@ -28,7 +29,7 @@
   border-radius: 20px;
   overflow: hidden;
   margin: 10px 0 0;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0,.5);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0,.3);
 }
 .inputComment{
   width: 100%;

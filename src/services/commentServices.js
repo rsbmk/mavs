@@ -19,3 +19,25 @@ export const getAllComments = () => {
     .then(res => res.json())
     .catch(e => console.log(e))
 }
+
+export const updateComment = ({ idComment, comment }) => {
+  return fetch(URL_API_COMMENT, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ idComment, comment })
+  }).then(res => res.json())
+    .catch(e => console.log(e))
+}
+
+export const deleteComment = ({ idComment }) => {
+  return fetch(URL_API_COMMENT, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ idComment })
+  }).then(res => res.json())
+    .catch(e => console.log(e))
+}

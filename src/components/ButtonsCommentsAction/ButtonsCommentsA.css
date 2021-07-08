@@ -1,0 +1,11 @@
+.wrapIconsActions{
+  position: absolute;
+  right: 5px;
+}
+.wrapIconsActions button {
+  color: var(--text);
+  border: none;
+  cursor: pointer;
+  margin: 0 3px;
+  background-color: transparent;
+}

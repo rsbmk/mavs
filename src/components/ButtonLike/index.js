@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
 import { LoginForm } from 'components/login'
-import { ModalPortal } from 'components/ModalLogin'
+import { ModalPortal } from 'components/ModalPortal'
 
 import { useShowModal } from 'hooks/useShowModal'
 import { useUser } from 'hooks/useUser'

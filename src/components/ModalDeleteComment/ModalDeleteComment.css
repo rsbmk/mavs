@@ -1,0 +1,23 @@
+.titleModalDeleteComment{
+  color: var(--text);
+  text-align: center;
+  font-size: 1em;
+  font-weight: 500;
+  margin: 3em 0;
+}
+.contentDeleteComment{
+  color: var(--text);
+  font-size: .8em;
+  text-align: center;
+  margin-bottom: 2em;
+}
+.wrapButtonsDeleteComment button {
+  background-color: var(--items);
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  display: block;
+  cursor: pointer;
+  margin: 10px auto;
+}

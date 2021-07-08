@@ -1,3 +1,5 @@
+import { LoginForm } from 'components/login'
+import { ModalPortal } from 'components/ModalPortal'
 import { useComment } from 'hooks/useComment'
 import { useShowModal } from 'hooks/useShowModal'
 import { useUser } from 'hooks/useUser'
@@ -5,7 +7,7 @@ import { useCallback, useState } from 'react'
 
 export function NewCommentForm ({ idCharacter }) {
   const [comment, setComment] = useState('')
-  const { openModal } = useShowModal()
+  const { showModal, closeModal, openModal } = useShowModal()
   const { addComment } = useComment()
   const { isLogged, userContext } = useUser()
 
@@ -26,16 +28,23 @@ export function NewCommentForm ({ idCharacter }) {
   )
 
   return (
-    <form className="newComment" onSubmit={handleSumbitComment}>
-      <input
-        value={comment}
-        onChange={handleInputComment}
-        className="inputComment"
-        placeholder="typing your comment ..."
-      />
-      <button className="btn">
-        <i className="fas fa-paper-plane"></i>
-      </button>
-    </form>
+    <>
+      <form className="newComment" onSubmit={handleSumbitComment}>
+        <input
+          value={comment}
+          onChange={handleInputComment}
+          className="inputComment"
+          placeholder="typing your comment ..."
+        />
+        <button className="btn">
+          <i className="fas fa-paper-plane"></i>
+        </button>
+      </form>
+      {showModal && (
+        <ModalPortal closeModal={closeModal}>
+          <LoginForm closeModal={closeModal} />
+        </ModalPortal>
+      )}
+    </>
   )
 }
