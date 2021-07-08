@@ -1,8 +1,14 @@
+.atribution{
+  margin: 1em 0;
+  text-align: center;
+}
+.atribution a {
+  color: var(--text);
+}
 .header{
   top: 0;
   position: sticky;
   min-height: 15vh;
-  margin-bottom: 1.5em;
   box-shadow: 0 0 5px 0 rgba(0,0,0,.5);
   background-color: var(--backgrundColorItems);
 
