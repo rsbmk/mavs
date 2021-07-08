@@ -1,11 +1,11 @@
-![mavs.png] (https://postimg.cc/2qBXfQjs)
+![mavs.png](https://postimg.cc/2qBXfQjs)
 # Mavs
 
 Mavs is a website where you can find all the marvel characters. The objective and the fun of this website is that you can find your favorite characters, leave a like and make a comment if you are. Of course, for all this you need to have a user account.
 
-![home] (https://postimg.cc/ct0MKYR5.png)
+![home](https://postimg.cc/ct0MKYR5.png)
 
-![detail] (https://postimg.cc/5XTrX767.png)
+![detail](https://postimg.cc/5XTrX767.png)
 
 ## Table of Contents
 1. List of new feactures
@@ -27,13 +27,13 @@ Mavs is a website where you can find all the marvel characters. The objective an
 ## How is the project built?
 Este proyecto está construido con react, intentando usar las mejores precticas posibles (asi que si vez una mala practica no dudes en corregirme). 
 
-The routes I am managing with the library of [wouter] (https://github.com/molefrog/wouter), and so far I have been super good.
+The routes I am managing with the library of [wouter](https://github.com/molefrog/wouter), and so far I have been super good.
 
-I'm using [react-helmet] (https://www.npmjs.com/package/react-helmet) to make the titles and short descriptions of the pages
+I'm using [react-helmet](https://www.npmjs.com/package/react-helmet) to make the titles and short descriptions of the pages
 
 For global states I am using react contexts for storage. Although in the future I will do it with Redux.
 
-And last but not least, I extract the data of the characters from the marvel api. But I keep the user data in my own Backend. [link-to-backend] (https://github.com/rsbmk/api-mavs)
+And last but not least, I extract the data of the characters from the marvel api. But I keep the user data in my own Backend. [link-to-backend](https://github.com/rsbmk/api-mavs)
 ## Get the proyect
 
 To get the project you first have to clone the repository, then go to the Mavs folder (which is the project folder) and then install all the dependencies. You can do all this with the following commands:
