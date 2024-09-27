@@ -19,12 +19,14 @@ export function useFilters() {
       searchParams.delete(INPUTS_NAMES.SEARCH);
     }
 
-    const comic = formData.get(INPUTS_NAMES.SELECT_COMIC) as string;
+    setSearchParams(searchParams);
+  };
 
-    if (comic === CLEAR_SELECTION) {
+  const handleSelect = (selection: string) => {
+    if (selection === CLEAR_SELECTION) {
       searchParams.delete(INPUTS_NAMES.SELECT_COMIC);
     } else {
-      searchParams.set(INPUTS_NAMES.SELECT_COMIC, comic);
+      searchParams.set(INPUTS_NAMES.SELECT_COMIC, selection);
     }
 
     setSearchParams(searchParams);
@@ -33,6 +35,7 @@ export function useFilters() {
   return {
     searchDefaultVaule,
     selectDefaultValue,
-    handleSearch
-  }
+    handleSearch,
+    handleSelect,
+  };
 }
