@@ -1,17 +1,25 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
-import { findAllCharacter } from "./character.respository";
+import { queryFnFindAllCharacter } from "./find-all.character.respository";
 import { useFilters } from "@/hooks/filters.hook";
 
 export function useQueryCharacters() {
   const { searchDefaultVaule, selectDefaultValue } = useFilters();
 
   const queryKey = ["characters", searchDefaultVaule, selectDefaultValue];
-  return useQuery({
+
+  return useInfiniteQuery({
     queryKey,
-    queryFn: () => findAllCharacter({ comics: selectDefaultValue, nameStartsWith: searchDefaultVaule }),
+    initialPageParam: 0,
     refetchOnWindowFocus: false,
     refetchOnMount: false,
     staleTime: Infinity,
+    queryFn: queryFnFindAllCharacter,
+    getNextPageParam: (lastPage, _pages, lastPageParam) => {
+      const hasNextPage = lastPage.offset + lastPage.limit < lastPage.total;
+      if (hasNextPage) return lastPageParam + 1;
+      return undefined;
+    },
+    select: (data) => data.pages.flatMap((data) => data.results),
   });
 }
