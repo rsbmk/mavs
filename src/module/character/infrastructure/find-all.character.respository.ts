@@ -1,7 +1,7 @@
 import { QueryFunctionContext } from "@tanstack/react-query";
-import { isAxiosError } from "axios";
 
 import { HTTP_MARVERL } from "@/lib/http";
+import { handleError } from "@/module/common/utils";
 import { ResponseCharacter } from "../domain/character.type";
 
 type FindAllCharacterProps = {
@@ -24,10 +24,7 @@ async function findAllCharacter({ limit = 10, page = 0, comics, nameStartsWith }
     });
     return data.data;
   } catch (error) {
-    if (isAxiosError(error)) {
-      throw new Error(error.message);
-    }
-    throw new Error("There was an error in obtaining the character data");
+    handleError(error, "We have an error getting characters");
   }
 }
 
