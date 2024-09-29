@@ -1,3 +1,5 @@
+import type { LogInCredentials } from "@/module/auth/domain/auth.types";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -9,8 +11,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { INPUTS_NAMES, PATHS } from "@/constants";
-import { Credentials } from "@/module/login/domain/login.types";
-import { useLoginMutation } from "@/module/login/infrastructure/login.mutation";
+import { useLoginMutation } from "@/module/auth/infrastructure/auth.mutation";
 
 const schemaSession = z.object({
   username: z.string().min(3).max(20),
@@ -24,11 +25,11 @@ export default function Login() {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<Credentials>({
+  } = useForm<LogInCredentials>({
     resolver: zodResolver(schemaSession),
   });
 
-  const onSubmit: SubmitHandler<Credentials> = (data) => mutate(data);
+  const onSubmit: SubmitHandler<LogInCredentials> = (data) => mutate(data);
 
   return (
     <div className="container mx-auto flex flex-col items-center justify-center min-h-screen">
