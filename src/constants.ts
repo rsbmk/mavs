@@ -3,12 +3,14 @@ export const { VITE_MARVEL_PUBLIC_KEY, VITE_MARVEL_PRIVATE_KEY, VITE_MARVEL_BASE
 export const SESSION_STORAGE_KEYS = {
   JWT: "jwt",
 };
+export const SESSION_STALE_TIME = 3 * 60 * 1000;
 
 export const INPUTS_NAMES = {
   SEARCH: "nameStartsWith",
   SELECT_COMIC: "comics",
   USERNAME: "username",
   PASSWORD: "password",
+  NAME: "name",
 };
 
 export const CLEAR_SELECTION = "Clear filter";
