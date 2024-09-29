@@ -1,21 +1,35 @@
-import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import z from "zod";
 
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { INPUTS_NAMES, PATHS } from "@/constants";
+import { SignUpCredentials } from "@/module/auth/domain/auth.types";
+import { useSignUpMutation } from "@/module/auth/infrastructure/auth.mutation";
+
+const schemaSession = z.object({
+  username: z.string().min(3).max(20),
+  password: z.string().min(6),
+  name: z.string().min(3).max(30),
+});
 
 export default function Signup() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const { mutate, isPending } = useSignUpMutation();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle signup logic here
-    console.log("Signup attempt with:", { name, email, password, confirmPassword });
-  };
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<SignUpCredentials>({
+    resolver: zodResolver(schemaSession),
+  });
+
+  const onSubmit: SubmitHandler<SignUpCredentials> = (data) => mutate(data);
 
   return (
     <div className="container mx-auto flex items-center justify-center min-h-screen">
@@ -24,34 +38,33 @@ export default function Signup() {
           <CardTitle className="text-2xl font-bold text-center">Sign Up</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" type="text" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} required />
+              <Label htmlFor={INPUTS_NAMES.NAME}>Name</Label>
+              <Input {...register("name")} type="text" placeholder="Enter your name" />
+              {errors.name && <small className="text-xs font-normal leading-4 text-red-400">{errors.name.message}</small>}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+              <Label htmlFor={INPUTS_NAMES.USERNAME}>Usernane</Label>
+              <Input {...register("username")} type="text" placeholder="Enter your username" />
+              {errors.username && <small className="text-xs font-normal leading-4 text-red-400">{errors.username.message}</small>}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirm Password</Label>
-              <Input id="confirmPassword" type="password" placeholder="Confirm your password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+              <Label htmlFor={INPUTS_NAMES.PASSWORD}>Password</Label>
+              <Input {...register("password")} type="password" placeholder="Enter your password" />
+              {errors.password && <small className="text-xs font-normal leading-4 text-red-400">{errors.password.message}</small>}
             </div>
             <Button type="submit" className="w-full">
-              Sign Up
+              {isPending ? <Loader2 className="animate-spin" /> : "Sign Up"}
             </Button>
           </form>
         </CardContent>
         <CardFooter className="flex justify-center">
           <p className="text-sm text-gray-600">
-            Already have an account?{" "}
-            <a href="/login" className="text-primary hover:underline">
+            Already have an account?
+            <Link to={PATHS.LOGIN} className="text-primary hover:underline ml-2">
               Login
-            </a>
+            </Link>
           </p>
         </CardFooter>
       </Card>
