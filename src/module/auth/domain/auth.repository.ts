@@ -1,5 +1,5 @@
 import type { Response } from "@/module/common/domain/mavs.repository";
-import type { LogInCredentials, Session, SignUpCredentials, User } from "../domain/auth.types";
+import type { LogInCredentials, Session, SignUpCredentials, User } from "./auth.types";
 
 import { HTTP_MAVS } from "@/lib/http";
 

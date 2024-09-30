@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
 import { PATHS, SESSION_STORAGE_KEYS } from "@/constants";
-import { login, signup } from "../infrastructure/auth.repository";
 import { InvalidLoginCredentialsException, InvalidSignUpCredentialsException } from "./auth.exceptions";
+import { login, signup } from "./auth.repository";
 import { LogInCredentials, SignUpCredentials } from "./auth.types";
 
 export function useLogin() {
