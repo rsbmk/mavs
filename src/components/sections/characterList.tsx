@@ -7,7 +7,7 @@ import { Character } from "./character";
 import { HeroListPlaceholder } from "./characterList.placeholder";
 
 export function CharacterList() {
-  const { data: likes, isPending: isPendingLikes, isError: isErrorLikes } = userFindLikesByUserQuery();
+  const { data: likes = [], isPending: isPendingLikes } = userFindLikesByUserQuery();
   const { data, isPending, isError, fetchNextPage, hasNextPage, isFetchingNextPage, isFetching } = useQueryCharacters();
 
   if (isPending || isPendingLikes) {
@@ -18,14 +18,6 @@ export function CharacterList() {
     return (
       <div className="flex justify-center items-center h-60">
         <h3>We have an error</h3>
-      </div>
-    );
-  }
-
-  if (isErrorLikes) {
-    return (
-      <div className="flex justify-center items-center h-60">
-        <h3>We have an error getting the likes</h3>
       </div>
     );
   }
