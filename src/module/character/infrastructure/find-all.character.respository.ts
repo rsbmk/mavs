@@ -24,7 +24,7 @@ async function findAllCharacter({ limit = 10, page = 0, comics, nameStartsWith }
     });
     return data.data;
   } catch (error) {
-    handleError(error, "We have an error getting characters");
+    throw handleError(error, "We have an error getting characters");
   }
 }
 
