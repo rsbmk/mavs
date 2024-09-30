@@ -16,10 +16,11 @@ export const HTTP_MARVERL = axios.create({
 
 export const HTTP_MAVS = axios.create({
   baseURL: VITE_MAVS_BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${window.sessionStorage.getItem("jwt")}`,
-  },
+});
+
+export const httpMavsHeaders = () => ({
+  "Content-Type": "application/json",
+  Authorization: `Bearer ${window.sessionStorage.getItem(SESSION_STORAGE_KEYS.JWT)}`,
 });
 
 HTTP_MAVS.interceptors.response.use(
