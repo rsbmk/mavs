@@ -22,7 +22,7 @@ export function useUnLikeMutation() {
     mutationKey: ["like"],
     mutationFn,
     onError(error, variables) {
-      handleError(error, `An error has ocurred while like: ${variables.characterId}`);
+      handleError(error, `An error has ocurred while like: ${variables.id}`);
     },
   });
 }

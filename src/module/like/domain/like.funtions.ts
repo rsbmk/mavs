@@ -1,4 +1,4 @@
-import type { CreateLikeDTO } from "./like.type";
+import type { CreateLikeDTO, DeleteLikeDTO } from "./like.type";
 
 import { InvalidLikeException } from "./like.exceptions";
 import { findLikesByUser, like, unLike } from "./like.respository";
@@ -12,10 +12,10 @@ export function useLike() {
 }
 
 export function useUnLike() {
-  return (likeDTO: CreateLikeDTO) => {
-    const { characterId } = likeDTO;
-    if (!characterId) throw new InvalidLikeException();
-    return unLike(characterId);
+  return (likeDTO: DeleteLikeDTO) => {
+    const { id } = likeDTO;
+    if (!id) throw new InvalidLikeException();
+    return unLike(id);
   };
 }
 

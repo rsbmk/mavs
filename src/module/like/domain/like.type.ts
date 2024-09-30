@@ -9,4 +9,4 @@ export type Like = {
 };
 
 export type CreateLikeDTO = Pick<Like, "characterId">;
-export type FindFilter = Partial<Pick<Like, "characterId">>;
+export type DeleteLikeDTO = Partial<Pick<Like, "id">>;
