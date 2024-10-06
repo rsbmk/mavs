@@ -8,7 +8,7 @@ import { CharacterListPlaceholder } from "../character/characterList.placeholder
 import { Button } from "../ui/button";
 
 export function CharacterList() {
-  const { data: likes = [], isPending: isPendingLikes } = useFindLikesByUser();
+  const { isPending: isPendingLikes } = useFindLikesByUser();
   const { data, isPending, isError, fetchNextPage, hasNextPage, isFetchingNextPage, isFetching } = useQueryCharacters();
 
   if (isPending || isPendingLikes) {
@@ -30,8 +30,7 @@ export function CharacterList() {
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {data.map((character) => {
-          const likeId = likes.find((like) => like.characterId === character.id)?.id;
-          return <Character character={character} likeId={likeId} key={character.id + character.name} />;
+          return <Character character={character} key={character.id + character.name} />;
         })}
       </div>
       <Button className="block mx-auto my-4 disabled:cursor-not-allowed" disabled={loadMoreButtonDisabled} onClick={() => fetchNextPage()}>

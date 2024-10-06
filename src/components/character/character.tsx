@@ -7,10 +7,9 @@ import { CharacterLikeButton } from "./like-button";
 
 type Props = {
   character: Character;
-  likeId?: string;
 };
 
-export function Character({ character, likeId }: Props) {
+export function Character({ character }: Props) {
   const { id, name, thumbnail, description } = character;
   const src = `${thumbnail.path}.${thumbnail.extension}`;
 
@@ -26,7 +25,7 @@ export function Character({ character, likeId }: Props) {
         </CardContent>
       </Link>
       <CardFooter className="flex flex-col items-start gap-2">
-        <CharacterLikeButton characterId={id} likeId={likeId} />
+        <CharacterLikeButton characterId={id} />
       </CardFooter>
     </Card>
   );
