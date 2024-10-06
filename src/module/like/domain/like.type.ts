@@ -6,6 +6,7 @@ export type Like = {
   createAt: Date;
   updateAt: Date;
   deleteAt: Date | null;
+  total?: number;
 };
 
 export type CreateLikeDTO = Pick<Like, "characterId">;
