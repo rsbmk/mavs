@@ -1,22 +1,19 @@
-import type { Character } from "@/module/character/domain/character.type";
 import type { Comment } from "@/module/comment/domain/comment.type";
 
+import { Send } from "lucide-react";
 import { useState } from "react";
-import { Heart, Send } from "lucide-react";
+import { useParams } from "react-router-dom";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { CharacterPlaceholder } from "@/components/character/characterList.placeholder";
+import { Comics } from "@/components/character/datails/comics";
+import { HeaderCharacter } from "@/components/character/datails/header";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-
-const mockCharacter: Character = {
-  id: 1,
-  name: "Iron Man",
-  description: "Genius billionaire playboy philanthropist",
-  thumbnail: "/placeholder.svg?height=400&width=300",
-  comics: ["Avengers", "Iron Man", "Civil War"],
-};
+import { Textarea } from "@/components/ui/textarea";
+import { URL_PARAMS } from "@/constants";
+import { useQueryCharacterBy } from "@/module/character/infrastructure/character.query";
 
 const mockComments: Comment[] = [
   { id: 1, user: "Steve Rogers", avatar: "/placeholder.svg?height=40&width=40", content: "Tony, you've outdone yourself this time!", timestamp: "2 hours ago" },
@@ -25,14 +22,11 @@ const mockComments: Comment[] = [
 ];
 
 export default function CharacterDetail() {
-  const [character] = useState<Character>(mockCharacter);
+  const { characterId } = useParams<URL_PARAMS>();
+  const { data: character, isError, isPending } = useQueryCharacterBy(characterId);
+
   const [comments, setComments] = useState<Comment[]>(mockComments);
   const [newComment, setNewComment] = useState("");
-  const [isLiked, setIsLiked] = useState(false);
-
-  const handleLike = () => {
-    setIsLiked(!isLiked);
-  };
 
   const handleCommentSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,27 +43,33 @@ export default function CharacterDetail() {
     }
   };
 
+  if (isError) {
+    return (
+      <div className="flex justify-center items-center h-60">
+        <h3>We have an error</h3>
+      </div>
+    );
+  }
+
+  if (isPending) {
+    return (
+      <div className="container mx-auto p-4">
+        <CharacterPlaceholder />
+      </div>
+    );
+  }
+
+  const { name, description, thumbnail, comics } = character;
+  const src = `${thumbnail.path}.${thumbnail.extension}`;
+
   return (
     <div className="container mx-auto p-4">
       <Card className="w-full max-w-4xl mx-auto">
-        <CardHeader>
-          <div className="flex justify-between items-center">
-            <CardTitle className="text-3xl font-bold">{character.name}</CardTitle>
-            <Button variant={isLiked ? "default" : "outline"} size="icon" onClick={handleLike}>
-              <Heart className={`h-6 w-6 ${isLiked ? "fill-current" : ""}`} />
-            </Button>
-          </div>
-        </CardHeader>
+        <HeaderCharacter characterId={characterId} name={name} />
         <CardContent className="space-y-4">
-          <img src={character.thumbnail} alt={character.name} className="w-full h-64 object-cover rounded-lg" />
-          <p className="text-lg">{character.description}</p>
-          <div className="flex flex-wrap gap-2">
-            {character.comics.map((comic, index) => (
-              <span key={index} className="bg-primary text-primary-foreground text-sm px-3 py-1 rounded-full">
-                {comic}
-              </span>
-            ))}
-          </div>
+          <img src={src} alt={name} className="object-cover w-full h-full rounded-lg aspect-[16/9]" />
+          <p className="text-lg">{description}</p>
+          <Comics comics={comics} />
         </CardContent>
         <CardFooter className="flex flex-col items-start">
           <h3 className="text-xl font-semibold mb-4">Comments</h3>
