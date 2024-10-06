@@ -3,7 +3,6 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 import { Button } from "@/components/ui/button";
-import { CardFooter } from "@/components/ui/card";
 import { useSession } from "@/module/auth/infrastructure/auth.query";
 import { useLikeMutation, useUnLikeMutation } from "@/module/like/infrastructure/like.mutation";
 
@@ -12,7 +11,7 @@ type Props = {
   characterId: number;
 };
 
-export function CharacterFooter({ likeId, characterId }: Props) {
+export function CharacterLikeButton({ likeId, characterId }: Props) {
   const { mutate: onLike, isPending: isPendingLike } = useLikeMutation();
   const { mutate: onUnLike, isPending: isPendingUnLike } = useUnLikeMutation();
   const { data: isSessionActive } = useSession();
@@ -36,11 +35,9 @@ export function CharacterFooter({ likeId, characterId }: Props) {
   const isPending = isPendingLike || isPendingUnLike;
 
   return (
-    <CardFooter className="flex flex-col items-start gap-2">
-      <Button variant={isLike ? "default" : "outline"} size="sm" className="mt-2 gap-2" onClick={toggleLike(characterId)}>
-        {isPending ? <Loader2 className="animate-spin" size={16} /> : <Heart className={isLike ? "fill-current" : ""} size={16} />}
-        {isLike ? "Liked" : "Like"}
-      </Button>
-    </CardFooter>
+    <Button variant={isLike ? "default" : "outline"} size="sm" className="mt-2 gap-2" onClick={toggleLike(characterId)}>
+      {isPending ? <Loader2 className="animate-spin" size={16} /> : <Heart className={isLike ? "fill-current" : ""} size={16} />}
+      {isLike ? "Liked" : "Like"}
+    </Button>
   );
 }
