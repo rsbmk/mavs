@@ -1,18 +1,18 @@
 import { Loader2 } from "lucide-react";
 
 import { useQueryCharacters } from "@/module/character/infrastructure/character.query";
-import { userFindLikesByUserQuery } from "@/module/like/infrastructure/like.query";
+import { useFindLikesByUser } from "@/module/like/infrastructure/like.query";
 
 import { Character } from "../character/character";
-import { HeroListPlaceholder } from "../character/characterList.placeholder";
+import { CharacterListPlaceholder } from "../character/characterList.placeholder";
 import { Button } from "../ui/button";
 
 export function CharacterList() {
-  const { data: likes = [], isPending: isPendingLikes } = userFindLikesByUserQuery();
+  const { data: likes = [], isPending: isPendingLikes } = useFindLikesByUser();
   const { data, isPending, isError, fetchNextPage, hasNextPage, isFetchingNextPage, isFetching } = useQueryCharacters();
 
   if (isPending || isPendingLikes) {
-    return <HeroListPlaceholder />;
+    return <CharacterListPlaceholder />;
   }
 
   if (isError) {
