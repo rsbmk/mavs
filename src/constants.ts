@@ -40,7 +40,16 @@ export const PATHS = {
   SIGNUP: "/signup",
   /**
    * @example "/character/123"
-   * @default "/character/"
+   * @default "/character"
    */
-  CHARACTER_DETAIL: "/character/",
+  CHARACTER_DETAIL: "/character",
+};
+
+export enum URL_PARAMS {
+  CHARACTER_ID = "characterId",
+}
+
+export const QUERY_KEYS = {
+  CHARACTERS: "characters",
+  LIKES_BY_USER: "likes-by-user",
 };
