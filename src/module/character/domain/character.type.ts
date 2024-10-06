@@ -6,7 +6,7 @@ export type ResponseCharacter = {
   attributionHTML: string;
   etag: string;
   data: Data;
-}
+};
 
 type Data = {
   offset: number;
@@ -14,7 +14,7 @@ type Data = {
   total: number;
   count: number;
   results: Character[];
-}
+};
 
 export type Character = {
   id: number;
@@ -28,32 +28,32 @@ export type Character = {
   stories: Stories;
   events: Comics;
   urls: URL[];
-}
+};
 
 type Comics = {
   available: number;
   collectionURI: string;
   items: ComicsItem[];
   returned: number;
-}
+};
 
 type ComicsItem = {
   resourceURI: string;
   name: string;
-}
+};
 
 type Stories = {
   available: number;
   collectionURI: string;
   items: StoriesItem[];
   returned: number;
-}
+};
 
 type StoriesItem = {
   resourceURI: string;
   name: string;
   type: ItemType;
-}
+};
 
 enum ItemType {
   Cover = "cover",
@@ -64,7 +64,7 @@ enum ItemType {
 type Thumbnail = {
   path: string;
   extension: Extension;
-}
+};
 
 enum Extension {
   GIF = "gif",
@@ -74,7 +74,7 @@ enum Extension {
 type URL = {
   type: URLType;
   url: string;
-}
+};
 
 enum URLType {
   Comiclink = "comiclink",
