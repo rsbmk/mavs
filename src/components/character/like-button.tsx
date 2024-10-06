@@ -1,21 +1,21 @@
 import { Heart, Loader2 } from "lucide-react";
-import { useState } from "react";
 import { toast } from "react-toastify";
 
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/module/auth/infrastructure/auth.query";
 import { useLikeMutation, useUnLikeMutation } from "@/module/like/infrastructure/like.mutation";
+import { useFindOneLikesByUserAndCharacter } from "@/module/like/infrastructure/like.query";
 
 type Props = {
-  likeId?: string;
   characterId: number;
 };
 
-export function CharacterLikeButton({ likeId, characterId }: Props) {
+export function CharacterLikeButton({ characterId }: Props) {
   const { mutate: onLike, isPending: isPendingLike } = useLikeMutation();
   const { mutate: onUnLike, isPending: isPendingUnLike } = useUnLikeMutation();
+  const { data: like, isPending: isPendingLikeData } = useFindOneLikesByUserAndCharacter(characterId);
   const { data: isSessionActive } = useSession();
-  const [isLike, setIsLike] = useState(Boolean(likeId));
+  const isLike = Boolean(like?.id);
 
   const toggleLike = (characterId: number) => () => {
     if (!isSessionActive) {
@@ -23,16 +23,14 @@ export function CharacterLikeButton({ likeId, characterId }: Props) {
       return;
     }
 
-    if (likeId) {
-      onUnLike({ id: likeId });
+    if (like?.id) {
+      onUnLike({ id: like.id });
     } else {
       onLike({ characterId });
     }
-
-    setIsLike((pre) => !pre);
   };
 
-  const isPending = isPendingLike || isPendingUnLike;
+  const isPending = isPendingLike || isPendingUnLike || isPendingLikeData;
 
   return (
     <Button variant={isLike ? "default" : "outline"} size="sm" className="mt-2 gap-2" onClick={toggleLike(characterId)}>
