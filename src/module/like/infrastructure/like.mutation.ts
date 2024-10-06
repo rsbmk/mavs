@@ -62,7 +62,7 @@ export function useUnLikeMutation() {
       const previousCache = queryClient.getQueryData<Like[]>(queryKeyLikes);
       if (previousCache) {
         const rmLike = previousCache.find((like) => like.id === variables.id);
-        queryClient.setQueryData([QUERY_KEYS.LIKES_BY_USER, String(rmLike?.characterId)], null);
+        queryClient.setQueryData([QUERY_KEYS.LIKES_BY_USER, rmLike?.characterId], null);
 
         const newCacheLikes = previousCache.filter((like) => like.id !== variables.id);
         queryClient.setQueryData(queryKeyLikes, newCacheLikes);
