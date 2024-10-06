@@ -1,5 +1,3 @@
-import { QueryFunctionContext } from "@tanstack/react-query";
-
 import { HTTP_MARVERL } from "@/lib/http";
 import { handleError } from "@/module/common/utils";
 import { ResponseCharacter } from "../domain/character.type";
@@ -11,7 +9,7 @@ type FindAllCharacterProps = {
   comics?: string;
 };
 
-async function findAllCharacter({ limit = 10, page = 0, comics, nameStartsWith }: FindAllCharacterProps) {
+export async function findAllCharacter({ limit = 10, page = 0, comics, nameStartsWith }: FindAllCharacterProps) {
   try {
     const { data } = await HTTP_MARVERL.get<ResponseCharacter>("/characters", {
       params: {
@@ -28,7 +26,11 @@ async function findAllCharacter({ limit = 10, page = 0, comics, nameStartsWith }
   }
 }
 
-export function queryFnFindAllCharacter({ queryKey, pageParam }: QueryFunctionContext<(string | undefined)[], number>) {
-  const [, nameStartsWith, comics] = queryKey;
-  return findAllCharacter({ page: pageParam, comics, nameStartsWith });
+export async function findOneCharacter(id: number) {
+  try {
+    const { data } = await HTTP_MARVERL.get<ResponseCharacter>(`/characters/${id}`);
+    return data.data;
+  } catch (error) {
+    throw handleError(error, "We have an error getting character");
+  }
 }
