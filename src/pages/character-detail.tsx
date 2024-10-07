@@ -1,36 +1,17 @@
-import { Send } from "lucide-react";
-import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { Comics } from "@/components/character/datails/comics";
 import { Comments } from "@/components/character/datails/comments";
+import { CreateCommentForm } from "@/components/character/datails/createComment";
 import { HeaderCharacter } from "@/components/character/datails/header";
 import { CharacterPlaceholder } from "@/components/character/placeholders";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Textarea } from "@/components/ui/textarea";
 import { URL_PARAMS } from "@/constants";
 import { useQueryCharacterBy } from "@/module/character/infrastructure/character.query";
 
 export default function CharacterDetail() {
   const { characterId } = useParams<URL_PARAMS>();
   const { data: character, isError, isPending } = useQueryCharacterBy(characterId);
-
-  const [newComment, setNewComment] = useState("");
-
-  const handleCommentSubmit = (e: React.FormEvent) => {
-    // e.preventDefault();
-    // if (newComment.trim()) {
-    //   const newCommentObj: Comment = {
-    //     id: "",
-    // avatar: "/placeholder.svg?height=40&width=40",
-    // content: newComment,
-    // timestamp: "Just now",
-    //   };
-    //   setComments([...comments, newCommentObj]);
-    //   setNewComment("");
-    // }
-  };
 
   if (isError) {
     return (
@@ -62,14 +43,7 @@ export default function CharacterDetail() {
         </CardContent>
         <CardFooter className="flex flex-col items-start">
           <Comments characterId={characterId} />
-          <form onSubmit={handleCommentSubmit} className="w-full">
-            <div className="flex items-center space-x-2">
-              <Textarea placeholder="Add a comment..." value={newComment} onChange={(e) => setNewComment(e.target.value)} className="flex-1" />
-              <Button type="submit" size="icon">
-                <Send className="h-4 w-4" />
-              </Button>
-            </div>
-          </form>
+          <CreateCommentForm characterId={characterId} />
         </CardFooter>
       </Card>
     </div>
