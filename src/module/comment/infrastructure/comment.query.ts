@@ -10,7 +10,7 @@ import { findCommentsByCharacer } from "./comment.repository";
  */
 export function useFindCommentByCharacter(characterId?: string) {
   return useQuery({
-    queryKey: [QUERY_KEYS.COMMENTS_BY_CHARACTER],
+    queryKey: [QUERY_KEYS.COMMENTS_BY_CHARACTER, characterId],
     enabled: Boolean(characterId),
     queryFn: () => findCommentsByCharacer(characterId!),
   });
