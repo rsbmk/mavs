@@ -52,4 +52,5 @@ export enum URL_PARAMS {
 export const QUERY_KEYS = {
   CHARACTERS: "characters",
   LIKES_BY_USER: "likes-by-user",
+  COMMENTS_BY_CHARACTER: "comments-by-character",
 };
