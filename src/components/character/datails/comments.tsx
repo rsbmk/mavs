@@ -41,8 +41,8 @@ export function Comments({ characterId }: Props) {
               </Avatar>
               <div className="flex-1">
                 <div className="flex items-center justify-between">
-                  <h4 className="font-semibold">{comment.userId}</h4>
-                  <span className="text-sm text-gray-500">{comment.createAt.toDateString()}</span>
+                  <h4 className="font-semibold">{comment.user.username}</h4>
+                  <span className="text-sm text-gray-500">{new Date(comment.createAt).toDateString()}</span>
                 </div>
                 <p className="mt-1">{comment.comment}</p>
               </div>
