@@ -4,7 +4,7 @@ import { useQueryCharacters } from "@/module/character/infrastructure/character.
 import { useFindLikesByUser } from "@/module/like/infrastructure/like.query";
 
 import { Character } from "../character/character";
-import { CharacterListPlaceholder } from "../character/characterList.placeholder";
+import { CharacterListPlaceholder } from "../character/placeholders";
 import { Button } from "../ui/button";
 
 export function CharacterList() {
