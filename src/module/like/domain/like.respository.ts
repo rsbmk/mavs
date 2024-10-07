@@ -42,6 +42,6 @@ export async function findLikesByUser() {
  * @returns {Promise<Like>} The like or null if not found.
  */
 export async function findLikeByCharacterAndUser(characterId: number) {
-  const { data } = await HTTP_MAVS.get<Response<Like>>(`/likes/${characterId}/character`);
+  const { data } = await HTTP_MAVS.get<Response<Like>>(`/likes/characters/${characterId}`);
   return data.data;
 }
