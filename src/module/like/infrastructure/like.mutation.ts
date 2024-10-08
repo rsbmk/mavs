@@ -21,7 +21,7 @@ export function useLikeMutation() {
     onMutate: async (variables) => {
       await queryClient.cancelQueries({ queryKey: queryKeyLikes });
       const previousCache = queryClient.getQueryData<Like[]>(queryKeyLikes);
-      if (previousCache) {
+      if (previousCache && previousCache.length > 0) {
         const newLike: Like = {
           id: crypto.randomUUID(),
           characterId: variables.characterId,
@@ -60,7 +60,7 @@ export function useUnLikeMutation() {
     onMutate: async (variables) => {
       await queryClient.cancelQueries({ queryKey: queryKeyLikes });
       const previousCache = queryClient.getQueryData<Like[]>(queryKeyLikes);
-      if (previousCache) {
+      if (previousCache && previousCache.length > 0) {
         const rmLike = previousCache.find((like) => like.id === variables.id);
         queryClient.setQueryData([QUERY_KEYS.LIKES_BY_USER, rmLike?.characterId], null);
 
