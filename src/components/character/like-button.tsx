@@ -35,7 +35,7 @@ export function CharacterLikeButton({ characterId }: Props) {
   return (
     <Button variant={isLike ? "default" : "outline"} size="sm" className="mt-2 gap-2" onClick={toggleLike(characterId)}>
       {isPending ? <Loader2 className="animate-spin" size={16} /> : <Heart className={isLike ? "fill-current" : ""} size={16} />}
-      {isLike ? "Liked" : "Like"}
+      {/* {like?.total ?? 0} */}
     </Button>
   );
 }
