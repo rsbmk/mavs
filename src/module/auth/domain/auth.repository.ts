@@ -21,6 +21,6 @@ export async function login(credentials: LogInCredentials) {
  * @returns The newly created user.
  */
 export async function signup(credentials: SignUpCredentials) {
-  const { data } = await HTTP_MAVS.post<Response<User>>("/users", credentials);
+  const { data } = await HTTP_MAVS.post<Response<User>>("/users/signup", credentials);
   return data.data;
 }

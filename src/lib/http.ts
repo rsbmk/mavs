@@ -26,13 +26,9 @@ const AUTHLESS_PATHS = [PATHS.LOGIN, PATHS.SIGNUP];
 HTTP_MAVS.interceptors.request.use((config) => {
   const jwt = window.sessionStorage.getItem(SESSION_STORAGE_KEYS.JWT);
 
-  if (AUTHLESS_PATHS.includes(config.url as string)) {
-    return config;
-  }
-
-  if (!jwt) {
-    return Promise.reject(new Error("You must be logged in"));
-  }
+  const isAuthless = AUTHLESS_PATHS.some((path) => config.url?.includes(path));
+  if (isAuthless) return config;
+  if (!jwt) return Promise.reject(new Error("You must be logged in"));
 
   config.headers.Authorization = `Bearer ${jwt}`;
   return config;
