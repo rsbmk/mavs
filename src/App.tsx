@@ -28,10 +28,10 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
+          <Route path={`${PATHS.CHARACTER_DETAIL}/:${URL_PARAMS.CHARACTER_ID}`} element={<CharacterDetail />} />
           <Route path={PATHS.HOME} element={<Home />} />
           <Route path={PATHS.LOGIN} element={<Login />} />
           <Route path={PATHS.SIGNUP} element={<Signup />} />
-          <Route path={`${PATHS.CHARACTER_DETAIL}/:${URL_PARAMS.CHARACTER_ID}`} element={<CharacterDetail />} />
         </Routes>
         <ToastContainer />
       </BrowserRouter>
