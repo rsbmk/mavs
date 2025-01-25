@@ -8,8 +8,6 @@ import { Like } from "../domain/like.type";
 
 /**
  * Find all likes of the current user.
- *
- * @returns {Promise<Like[]>} The likes of the current user.
  */
 export function useFindLikesByUser() {
   const queryFn = useLikeByUser();
@@ -43,7 +41,6 @@ export function useFindOneLikesByUserAndCharacter(characterId: number) {
        * if i have a cache, and the like is not there maybe not exist in the server
        */
       if (cache && cache.length > 0) return null;
-
       return findLikeByCharacterAndUser(Number(characterId));
     },
   });

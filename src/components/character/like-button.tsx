@@ -1,19 +1,21 @@
 import { Heart, Loader2 } from "lucide-react";
 import { toast } from "react-toastify";
 
+import type { LikeUser } from "@/module/like/domain/like.type";
+
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/module/auth/infrastructure/auth.query";
 import { useLikeMutation, useUnLikeMutation } from "@/module/like/infrastructure/like.mutation";
-import { useFindOneLikesByUserAndCharacter } from "@/module/like/infrastructure/like.query";
 
 type Props = {
   characterId: number;
+  likes: LikeUser[];
 };
 
-export function CharacterLikeButton({ characterId }: Props) {
+export function CharacterLikeButton({ characterId, likes }: Props) {
   const { mutate: onLike, isPending: isPendingLike } = useLikeMutation();
   const { mutate: onUnLike, isPending: isPendingUnLike } = useUnLikeMutation();
-  const { data: like, isPending: isPendingLikeData } = useFindOneLikesByUserAndCharacter(characterId);
+  const { like } = likes.find((like) => like.like.characterId === characterId) || {};
   const { data: isSessionActive } = useSession();
   const isLike = Boolean(like?.id);
 
@@ -30,12 +32,12 @@ export function CharacterLikeButton({ characterId }: Props) {
     }
   };
 
-  const isPending = isPendingLike || isPendingUnLike || isPendingLikeData;
+  const isPending = isPendingLike || isPendingUnLike;
 
   return (
     <Button variant={isLike ? "default" : "outline"} size="sm" className="mt-2 gap-2" onClick={toggleLike(characterId)}>
       {isPending ? <Loader2 className="animate-spin" size={16} /> : <Heart className={isLike ? "fill-current" : ""} size={16} />}
-      {/* {like?.total ?? 0} */}
+      {/* {total} */}
     </Button>
   );
 }

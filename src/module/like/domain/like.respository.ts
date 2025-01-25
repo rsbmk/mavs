@@ -1,5 +1,5 @@
 import type { Response } from "@/module/common/domain/mavs.repository";
-import type { CreateLikeDTO, Like } from "./like.type";
+import type { CreateLikeDTO, Like, LikeUser } from "./like.type";
 
 import { HTTP_MAVS } from "@/lib/http";
 
@@ -28,10 +28,10 @@ export async function unLike(id: string) {
 /**
  * Find all likes of the current user.
  *
- * @returns {Promise<Like[]>} The likes of the current user.
+ * @returns {Promise<LikeUser[]>} The likes of the current user.
  */
 export async function findLikesByUser() {
-  const { data } = await HTTP_MAVS.get<Response<Like[]>>(`/likes/user`);
+  const { data } = await HTTP_MAVS.get<Response<LikeUser[]>>(`/likes/user`);
   return data.data;
 }
 

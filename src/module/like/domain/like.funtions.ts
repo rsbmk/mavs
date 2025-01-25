@@ -20,5 +20,5 @@ export function useUnLike() {
 }
 
 export function useLikeByUser() {
-  return () => findLikesByUser().catch(() => []);
+  return () => findLikesByUser();
 }
