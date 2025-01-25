@@ -20,6 +20,10 @@ const queryClient = new QueryClient({
 });
 
 function App() {
+  if (window.location.pathname === "/") {
+    window.location.pathname = PATHS.HOME;
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
