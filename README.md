@@ -1,61 +1,67 @@
 # Mavs
 
-![Mavs](http://imgfz.com/i/LREjI09.png)
+## Purpose
 
-Mavs is a website where you can find all the marvel characters. The objective and the fun of this website is that you can find your favorite characters, leave a like and make a comment if you are. Of course, for all this you need to have a user account.
+This repository contains the **Mavs** application, a Marvel superhero catalog. Users can explore a vast collection of Marvel superheroes, like their favorite characters, and add comments in the character detail view. The application also allows users to search for any Marvel superhero and provides options to sign up and log in.
 
-![home](http://imgfz.com/i/iQtvcTJ.png)
+## Features
 
-![detail](http://imgfz.com/i/pEsmPif.png)
+- **Like Characters**: Users can like their favorite Marvel superheroes.
+- **Add Comments**: Users can leave comments on individual character detail pages.
+- **Search Functionality**: Search across the entire Marvel superhero database.
+- **Sign Up**: Create an account to interact with the app.
+- **Login**: Log in to access features like liking and commenting.
 
-## Table of Contents
+## Usage
 
-1. List of new feactures
-2. Guide to developers
-3. How is the project built?
-4. Get the proyect
-5. Collaborations
+1. **Clone the Repository**:
 
-## All this is just the beginning, the next features that I would like to integrate are:
+   ```bash
+   git clone <repository_url>
+   cd <repository_directory>
+   ```
 
-- Be able to see the amount of likes and comments that each character has.
+2. **Install Dependencies**:
+   This project uses `npm` for dependency management. Run the following command to install all necessary dependencies:
 
-- Have a page where you can see all the characters that you have liked.
+   ```bash
+   npm install
+   ```
 
-- Have the option to delete your account.
+3. **Environment Variables**:
 
-# Guide to developers
+   - Refer to the `.env.example` file for the required environment variables.
+   - Copy `.env.example` and rename it to `.env`. Update the variables as per your configuration.
 
-## How is the project built?
+4. **Run the Project Locally**:
 
-Este proyecto está construido con react, intentando usar las mejores precticas posibles (asi que si vez una mala practica no dudes en corregirme).
+   - Start the development server using:
+     ```bash
+     npm run dev
+     ```
+   - The application will typically be available at `http://localhost:5173`.
 
-The routes I am managing with the library of [wouter](https://github.com/molefrog/wouter), and so far I have been super good.
+5. **Build for Production**:
+   - To build the project for production, execute:
+     ```bash
+     npm run build
+     ```
+   - The production build will be located in the `dist` folder.
 
-I'm using [react-helmet](https://www.npmjs.com/package/react-helmet) to make the titles and short descriptions of the pages
+## Technologies
 
-For global states I am using react contexts for storage. Although in the future I will do it with Redux.
+This project leverages the following technologies:
 
-And last but not least, I extract the data of the characters from the marvel api. But I keep the user data in my own Backend. [link-to-backend](https://github.com/rsbmk/api-mavs)
+- **TypeScript**: For type safety and improved development experience.
+- **React**: Core library for building the user interface.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **React Query**: For managing server state and data fetching.
+- **React Hook Form**: For managing forms and user input.
 
-## Get the proyect
+## Contribution
 
-To get the project you first have to clone the repository, then go to the Mavs folder (which is the project folder) and then install all the dependencies. You can do all this with the following commands:
+Contributions are welcome! While there is no specific contribution guideline at the moment, feel free to fork the repository, create a branch, and submit a pull request with your changes.
 
-```
-git clone https://github.com/rsbmk/mavs.git
-cd mavs
-npm i
-```
+## License
 
-## Collaborations
-
-If you want to collaborate in this project, you are totally welcome! I'm going to leave you a list of some bugs, or things to do that I will be working on. If you want you can start with these:
-
-- How to handle when the jwt expired.
-- Optimization on the home page. When entering the detail of a character and navigating back (to home), do not use the API call if the gifs exist in the context gifs.
-- When you open the menu, you have to hit the menu button again to close it
-
-## TODO:
-
-[ ] - sherd my fav character list
+This project is licensed under the **MIT License**. See the `LICENSE` file for more details.
